@@ -27,9 +27,9 @@ class Gaussian(Distribution):
             
         """
         
-        mean = (1.0*sum(self.data))/len(self.data)
+        avg = 1.0 * sum(self.data) / len(self.data)
         
-        self.mean = mean
+        self.mean = avg
         
         return self.mean
         
@@ -114,10 +114,7 @@ class Gaussian(Distribution):
             float: probability density function output
         """
         
-        sdev = self.stdev
-        mean = self.mean
-        
-        return (1/(math.sqrt(2*math.pi*(sdev**2))))*math.exp(-((x-mean)**2)/(2*(sdev**2)))
+        return (1.0 / (self.stdev * math.sqrt(2*math.pi))) * math.exp(-0.5*((x - self.mean) / self.stdev) ** 2)
         
     def plot_histogram_pdf(self, n_spaces = 50):
         """Function to plot the normalized histogram of the data and a plot of the probability
