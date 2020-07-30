@@ -80,8 +80,8 @@ class Gaussian(Distribution):
             data_list = []
             number = file.readline()
             while number:
-                data_list.append(float(line))
-                line = file.readline()
+                data_list.append(float(number))
+                number = file.readline()
         file.close()
         
         self.data = data_list # Could I have simply used Distribution.read_data_file for this part?
